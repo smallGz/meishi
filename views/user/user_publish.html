@@ -1,0 +1,272 @@
+{%extends './layout.html' %}
+{% block head %}
+<link rel="stylesheet" href="/public/css/user_form.css">
+<link rel="stylesheet" href="/public/css/user_publish.css">
+{% endblock %}
+
+{% block main %}
+<section class="self_content">
+        <div class="wrap">
+            <h2><span>发布新菜谱</span></h2>
+            <form class="addmenuform" method="POST">
+                <div>
+                    <p>菜谱名称</p>
+                    <input name="menuname" type="text" />
+                </div>
+                <div>
+                    <p>分类</p>
+
+                    <select name="categoryId" id="categoryId">
+                        {%for category in categories %}
+                        <option value="{{category.id}}">{{category.name}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div class="clearfix">
+                    <p>成品图片(最多9张)</p>
+                    <label class="filelabel">
+                        <span>上传成品图</span>
+                        <input type="file" multiple id="uploadImg" />
+                    </label>
+                    <ul class="thumb_list">
+                    </ul>
+                </div>
+                <div>
+                    <textarea class="tips" name="description" placeholder="最多输入500字"></textarea>
+                </div>
+                <div>
+                    <p>基本参数</p>
+                    <ul class="optionlist clearfix">
+                        <li>
+                            <div class="select clearfix" id="level">
+                                <span>难度</span>
+                                <em></em>
+                                <i></i>
+                            </div>
+                            <div class="selectoption hidden" id="diff">
+                                <span data-value="1">简单</span>
+                                <span data-value="2">普通</span>
+                                <span data-value="3">高级</span>
+                                <span data-value="4">神级</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select clearfix" id="taste">
+                                <span>口味</span>
+                                <em></em>
+                                <i></i>
+                            </div>
+                            <div class="selectoption hidden"  id="flavor">
+                                <span data-value="1">微辣</span>
+                                <span data-value="2">中辣</span>
+                                <span data-value="3">超辣</span>
+                                <span data-value="4">麻辣</span>
+                                <span data-value="5">酸辣</span>
+                                <span data-value="6">酸甜</span>
+                                <span data-value="7">酸咸</span>
+                                <span data-value="8">咸鲜</span>
+                                <span data-value="9">咸甜</span>
+                                <br />
+                                <span data-value="10">甜味</span>
+                                <span data-value="11">苦味</span>
+                                <span data-value="12">原味</span>
+                                <span data-value="13">清淡</span>
+                                <span data-value="14">五香</span>
+                                <span data-value="15">鱼香</span>
+                                <span data-value="16">葱香</span>
+                                <span data-value="17">蒜香</span>
+                                <span data-value="18">奶香</span>
+                                <br />
+                                <span data-value="19">酱香</span>
+                                <span data-value="20">糟香</span>
+                                <span data-value="21">咖喱</span>
+                                <span data-value="22">孜然</span>
+                                <span data-value="23">果味</span>
+                                <span data-value="24">香草</span>
+                                <span data-value="25">怪味</span>
+                                <span data-value="26">麻香</span>
+                                <span data-value="27">其他</span>
+                                
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="select clearfix" id="craft">
+                                <span>工艺</span>
+                                <em></em>
+                                <i></i>
+                            </div>
+                            <div class="selectoption hidden" id="tech">
+                                <span data-value="1">烧</span>
+                                <span data-value="2">炒</span>
+                                <span data-value="3">爆</span>
+                                <span data-value="4">焖</span>
+                                <span data-value="5">炖</span>
+                                <span data-value="6">蒸</span>
+                                <span data-value="7">煮</span>
+                                <span data-value="8">拌</span>
+                                <span data-value="9">烤</span>
+                                <br />
+                                <span data-value="10">炸</span>
+                                <span data-value="11">烩</span>
+                                <span data-value="12">溜</span>
+                                <span data-value="13">氽</span>
+                                <span data-value="14">腌</span>
+                                <span data-value="15">卤</span>
+                                <span data-value="16">炝</span>
+                                <span data-value="17">煎</span>
+                                <span data-value="18">酥</span>
+                                <br />
+                                <span data-value="19">扒</span>
+                                <span data-value="20">熏</span>
+                                <span data-value="21">煨</span>
+                                <span data-value="22">酱</span>
+                                <span data-value="23">烘焙</span>
+                                <span data-value="24">火锅</span>
+                                <span data-value="25">砂锅</span>
+                                <span data-value="26">拔丝</span>
+                                <span data-value="27">生鲜</span>
+                                <br />
+                                <span data-value="28">调味</span>
+                                <span data-value="29">技巧</span>
+                                <span data-value="30">煲</span>
+                                <span data-value="31">烙</span>
+                                <span data-value="32">榨</span>
+                                <span data-value="33">冷冻</span>
+                                <span data-value="50">其他</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select clearfix" id="needTime">
+                                <span>耗时</span>
+                                <em></em>
+                                <i></i>
+                            </div>
+                            <div class="selectoption hidden" id="longTime">
+                                <span data-value="1">十分钟</span>
+                                <span data-value="2">廿分钟</span>
+                                <span data-value="3">半小时</span>
+                                <span data-value="4">三刻钟</span>
+                                <br />
+                                <span data-value="5">一小时</span>
+                                <span data-value="6">数小时</span>
+                                <span data-value="7">一天</span>
+                                <span data-value="8">数天</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="select clearfix" id="cookers">
+                                <span>厨具</span>
+                                <em class="more_option"></em>
+                                <i></i>
+                            </div>
+                            <div class="selectoption hidden" id="kitchenWare">
+                                <span data-value="1">炒锅</span>
+                                <span data-value="2">煮锅</span>
+                                <span data-value="3">平底锅</span>
+                                <span data-value="4">蒸锅</span>
+                                <span data-value="5">不粘锅</span>
+                                <span data-value="6">电烤箱</span>
+                                <span data-value="7">食物调理机</span>
+                                <span data-value="8">砂锅</span>
+                                <span data-value="9">汤锅</span>
+                                <br />
+                                <span data-value="10">高压锅</span>
+                                <span data-value="11">电压力锅</span>
+                                <span data-value="12">电饭煲</span>
+                                <span data-value="13">焖烧锅</span>
+                                <span data-value="14">微波炉</span>
+                                <span data-value="15">搅拌机</span>
+                                <span data-value="16">豆浆机</span>
+                                <span data-value="17">电磁炉</span>
+                                <span data-value="18">烤炉</span>
+                                <br />
+                                <span data-value="19">炖盅</span>
+                                <span data-value="20">瓦煲</span>
+                                <span data-value="21">电子瓦煲</span>
+                                <span data-value="22">面包机</span>
+                                <span data-value="23">吐司炉</span>
+                                <span data-value="24">酸奶机</span>
+                                <span data-value="25">咖啡机</span>
+                                <span data-value="26">打蛋器</span>
+                                <span data-value="27">调酒器</span>
+                                <br />
+                                <span data-value="28">果冻模</span>
+                                <span data-value="29">奶泡机</span>
+                                <span data-value="30">模具锅</span>
+                                <span data-value="31">电饼铛</span>
+                                <span data-value="32">空气炸锅</span>
+                                <span data-value="33">榨汁机</span>
+                                <span data-value="34">厨师机</span>
+                                <span data-value="35">破壁机</span>
+                                <span data-value="36">养生壶</span>
+                                <br />
+                                <span data-value="37">烧烤架/炉</span>
+                                <span data-value="50">其他</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <p>食物明细（新功能：支持添加多组食材，并可以修改食材组名）</p>
+                    <div class="addfood">
+                        <h4>主料</h4>
+                        <ul class="foodlist m">
+                            <!-- <li class="foodnum clearfix">
+                                <input type="text" placeholder="食材名" />
+                                <input type="text" placeholder="用量" />
+                                <button class="hidden">X</button>
+                            </li> -->
+                        </ul>
+                        <button class="addfoodgroup" type="button">添加主料</button>
+                        <!-- <input type="button" value="添加主料" class="addfoodgroup" /> -->
+                        <h4>辅料</h4>
+                        <ul class="foodlist s">
+                            <!-- <li class="foodnum clearfix">
+                                <input type="text" placeholder="食材名" />
+                                <input type="text" placeholder="用量" />
+                                <button class="hidden">X</button>
+                            </li> -->
+                        </ul>
+                        <button class="addfoodgroup" type="button">添加辅料</button>
+                    </div>
+                </div>
+                <div>
+                    <p>做法步骤</p>
+                    <label class="upload">
+                        <span>批量上传</span>
+                        <input type="file" id="stepUploadImg" multiple />
+                    </label>
+                    <ul class="piclist">
+                        <!-- <li class="clearfix">
+                            <label>
+                                <img src="" alt="">
+                            </label>
+                            <textarea name="miaoshu" placeholder="请输入做法说明菜谱描述，最多输入200字"></textarea>
+                            <aside class="side_skill">
+                                <span>X</span>
+                                <span>∧</span>
+                                <span>∨</span>
+                            </aside>
+                        </li> -->
+                        
+                    </ul>
+                </div>
+                <div>
+                    <p class="unrequired">小窍门</p>
+                    <textarea class="tips" name="tips" placeholder="最多输入500字"></textarea>
+                </div>
+                <button type="submit" class="submit">发布菜谱</button>
+                <span id="message"></span>
+            </form>
+        </div>
+    </section>
+{% endblock%}
+
+{% block JS %}
+<script type='text/javascript' src='/public/js/jquery.min.js'></script>
+<script type='text/javascript' src='/public/js/user.js'></script>
+<script type='text/javascript' src='/public/js/user_publish.js'></script>
+{% endblock %}
+
+

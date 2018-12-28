@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/public/css/reset.css">
+        <link rel="stylesheet" href="/public/css/header.css">
+        <link rel="stylesheet" href="/public/css/index.css">
+        <link rel="stylesheet" href="/public/css/footer.css">
+        <title>美食天下-妙味版</title>
+    </head>
+    <body>
+        <div class="box_outside">
+            <div class="wrap">
+                <header class="top_header">
+                    {%include 'top.html'%}
+                    <h1 class="logo">美食天下</h1>
+                    <nav class="header_nav">
+                        <a href="/">首页</a>
+                        <a href="/list">菜谱</a>
+                        <a href="#">精选集</a>
+                        <a href="#">排行</a>
+                    </nav>
+                    <div class="search">
+                        <input type="search" />
+                        <button type="button" name="button">搜索</button>
+                    </div>
+                </header>
+                <section class="show_area">
+                    <div class="banner">
+                        <a id="prev" href="javascript:;"></a>
+                        <ul class="show_img">
+                            <li class="active"><img src="/public/img/banner1.jpg" alt="" /></li>
+                            <li><img src="/public/img/banner2.jpg" alt="" /></li>
+                            <li><img src="/public/img/banner3.jpg" alt="" /></li>
+                            <li><img src="/public/img/banner4.jpg" alt="" /></li>
+                            <li><img src="/public/img/banner5.jpg" alt="" /></li>
+                        </ul>
+                        <a id="next" href="javascript:;"></a>
+                        <ul class="spot">
+                            <li class="active"></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <ul class="menu">
+                        {%for category in categories%}
+                        {% if loop.index <= 5 %}
+                        <li>
+                            <a href="#">{{category.name}}</a>
+                            <ul class="sub">
+                                {% for child in category.children %}
+                                <li><a href="/list/{{child.id}}">{{child.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {%endfor%}
+                    </ul>
+                </section>
+                <section class="news">
+                    <a id="news_prev" href="javascript:;"></a>
+                    <div class="news_content">
+                        <ul class="news_list">
+                            <li>
+                                <h2>清淡素食，健康简约不简单～</h2>
+                                <p>
+                                    <span>李金芳成的菜单</span>
+                                    科学搭配、合理素食，是当下流行的健康生活方式。为家人健康，收藏，尝试！ ​
+                                </p>
+                            </li>
+                            <li>
+                                <h2>美味蒸菜系列之蒸蛋</h2>
+                                <p>
+                                    <span>Gladys0512的菜单</span>
+                                    一道普通的蒸水蛋，竟然还有这么多的花样做法，喜欢的快来试试看吧～ ​
+                                </p>
+                            </li>
+                            <li>
+                                <h2>花样早餐</h2>
+                                <p>
+                                    <span>叶子_QjgLpb的菜单</span>
+                                    美好的一天从一顿丰富的早餐开始～让幸福感再强烈一点吧～
+                                </p>
+                            </li>
+                            <li>
+                                <h2>我的健康小零食－饼干</h2>
+                                <p>
+                                    <span>冬至zsl的菜单</span>
+                                    自制健康美味的小饼干，香酥美味，做法简单，适合刚学烘焙的童鞋，美食get√​
+                                </p>
+                            </li>
+                            <li>
+                                <h2>我的健康小零食－饼干</h2>
+                                <p>
+                                    <span>冬至zsl的菜单</span>
+                                    自制健康美味的小饼干，香酥美味，做法简单，适合刚学烘焙的童鞋，美食get√​
+                                </p>
+                            </li>
+                            <li>
+                                <h2>我的健康小零食－饼干</h2>
+                                <p>
+                                    <span>冬至zsl的菜单</span>
+                                    自制健康美味的小饼干，香酥美味，做法简单，适合刚学烘焙的童鞋，美食get√​
+                                </p>
+                            </li>
+                            <li>
+                                <h2>水果花样吃法！</h2>
+                                <p>
+                                    <span>阿鸢0808的菜单</span>
+                                    水果的各种花样吃法，看起来色彩缤纷的太诱惑人了 ​！喜欢还不赶紧收藏？
+                                </p>
+                            </li>
+                            <li>
+                                <h2>水果花样吃法！</h2>
+                                <p>
+                                    <span>阿鸢0808的菜单</span>
+                                    水果的各种花样吃法，看起来色彩缤纷的太诱惑人了 ​！喜欢还不赶紧收藏？
+                                </p>
+                            </li>
+                            <li>
+                                <h2>水果花样吃法！</h2>
+                                <p>
+                                    <span>阿鸢0808的菜单</span>
+                                    水果的各种花样吃法，看起来色彩缤纷的太诱惑人了 ​！喜欢还不赶紧收藏？
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <a id="news_next" href="javascript:;"></a>
+                </section>
+                <section class="dish_display">
+                    <header class="dish_header">
+                        <nav class="dish_list">
+                            <a class="on" href="javascript:;">新秀菜谱</a>
+                            <a href="javascript:;">一周热门</a>
+                        </nav>
+                        <nav class="dish_link">
+                            <!-- <a href="javascript:;">热菜</a>
+                            <a href="javascript:;">凉菜</a>
+                            <a href="javascript:;">汤羹</a>
+                            <a href="javascript:;">主食</a>
+                            <a href="javascript:;">小吃</a>
+                            <a href="javascript:;">西餐</a> -->
+                            <a href="javascript:;">菜谱首页</a>
+                        </nav>
+                    </header>
+                    <div class="dish_content">
+                        <ul>
+                        {% for cookbook in cookbookData %}
+                            <li>
+                                <figure>
+                                    <div class="dish_img">
+                                        <a href="/view/{{cookbook.id}}">
+                                            <img src="/public/uploads/cookbooks/{{cookbook.cover}}" alt="" />
+                                        </a>
+                                    </div>
+                                    <figcaption>
+                                        <a href="/view/{{cookbook.id}}"><i>{{cookbook.name}}</i></a>
+                                        <span>{{cookbook.username}}</span>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                           {% endfor %} 
+                        </ul>
+                    </div>
+                </section>
+                <footer class="bottom_foot">
+                    <div class="foot_nav">
+                        <h3>美食天下 - 让吃更美好！</h3>
+                        <nav class="nav_list">
+                            <a href="#">关于我们</a>
+                            <a href="#">联系我们</a>
+                            <a href="#">加入我们</a>
+                            <a href="#">服务声明</a>
+                            <a href="#">友情链接</a>
+                            <a href="#">网站地图</a>
+                            <a href="#">移动应用</a>
+                        </nav>
+                    </div>
+                    <p class="friends_link">
+                        <span>友情链接：</span>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                        <a href="#">妙味课堂</a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

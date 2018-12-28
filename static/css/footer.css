@@ -1,0 +1,46 @@
+.bottom_foot{
+    border-top: 1px solid #e8e8e8;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+.foot_nav h3{
+    color: #f50;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.foot_nav h3:hover{
+    text-decoration: underline;
+}
+.bottom_foot a:hover{
+    color: #ff6767;
+}
+.nav_list{
+    overflow: hidden;
+}
+.nav_list a{
+    float: left;
+    color: #666;
+    font-size: 12px;
+}
+.nav_list a::after{
+    content: '·';
+    padding: 0 5px;
+}
+.nav_list a:last-of-type::after{
+    content: '';
+}
+.friends_link{
+    overflow: hidden;
+    margin: 15px 0;
+
+}
+.friends_link span{
+    font-weight: bold;
+    float: left;
+}
+.friends_link a{
+    float: left;
+    color: #666;
+    margin-right: 12px;
+}
